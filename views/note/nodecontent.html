@@ -56,6 +56,8 @@
 				function appendHtml(htmlObj,dataId){
 					jQuery("p[data-key='"+dataId+"']").parent().append(htmlObj);
 					jQuery("p[data-key='"+dataId+"']").parent().siblings().find(' div').addClass('hide');
+					jQuery("p[data-key='"+dataId+"']").addClass('current');
+					jQuery("p[data-key='"+dataId+"']").parent().siblings().find(' p').removeClass('current');
 				}
 				jQuery(".notecontent").bind('click', function(event) {
 					var keyId = jQuery(this).attr("data-key");
