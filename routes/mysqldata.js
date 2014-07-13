@@ -205,9 +205,19 @@ this.noteOperate = (function(){
 		});
 	}
 
+	function getContentById(obj,fun){
+		var _id = obj.id;
+		console.dir(_id);
+		var query = connection.query("select * from note where id=?",[_id],function(err,result){
+			if(err) throw err;
+			fun(result);
+		});
+	}
+
 	return{
 		login: noteLogin,
 		submitnote : submitnote,
-		getNodeData : getNodeData
+		getNodeData : getNodeData,
+		getContentById : getContentById
 	}
 })();

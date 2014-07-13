@@ -34,11 +34,13 @@
 			    //called when complete
 			  },
 			  success: function(data, textStatus, xhr) {
-			    var html = '<li class="noteitem current"><p class="notecontent">[content]</p></li>';
+			    var html = '<li class="noteitem"><p class="notecontent current" data-key="[keyId]">[content]</p></li>';
 			    var htmlstr = "";
 			    for (var i = 0; i < data.length; i++) {
-			    	if(data[i].title){
-			    		htmlstr += html.replace("[content]",data[i].title);
+			    	if(i==0){
+			    		htmlstr += html.replace("[content]",data[i].title).replace("[keyId]",data[i].id);
+			    	}else{
+			    		htmlstr += html.replace("current","").replace("[content]",data[i].title).replace("[keyId]",data[i].id);
 			    	}
 			    };
 			    jQuery(".notelist").html(htmlstr);
@@ -49,6 +51,21 @@
 			});
 			var userName = opercateCookie.getcookie("loginname");
 			jQuery("#userInfo").text(userName);
+
+			setTimeout(function(){
+				function appendHtml(htmlObj,dataId){
+					jQuery("p[data-key='"+dataId+"']").parent().append(htmlObj);
+					jQuery("p[data-key='"+dataId+"']").parent().siblings().find(' div').addClass('hide');
+				}
+				jQuery(".notecontent").one('click', function(event) {
+					var keyId = jQuery(this).attr("data-key");
+					jQuery.get('../../getContentId', {id: keyId}, function(data, textStatus, xhr) {
+						var _html = jQuery('<div class="itemContent"><p>[content]</p></div>'.replace("[content]",data[0].content));
+						appendHtml(_html,keyId);
+					});	
+				});
+			},100);
+			
 		</script>
 		<footer>
 			<div class="footline"></div>

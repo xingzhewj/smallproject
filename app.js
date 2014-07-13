@@ -56,6 +56,7 @@ app.get('/note',routes.note);
 app.post('/submitnote',routes.submitnote);
 app.get("/notecontent",routes.notecontent);
 app.get("/getNoteContent",routes.getNoteContent);
+app.get("/getContentId",routes.getContentId);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));

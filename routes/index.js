@@ -175,3 +175,13 @@ exports.submitnote = function(req,res){
 		
 	});
 };
+exports.getContentId = function(req,res){
+    var obj = req.query;
+    myData.noteOperate.getContentById(obj,function(result){
+        if(result){
+            res.send(result);
+        }else{
+            res.send({});
+        }
+    });
+};
