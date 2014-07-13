@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>留言板</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/notecss/notewrite.css">
+    <script type="text/javascript" src="../javascripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../javascripts/cookies.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <ul class="menu">
+            <li id="loginname">王杰</li>
+            <li id="nodename">我的留言板</li>
+        </ul>
+    </header>
+    <article class="con-body">
+        <div>
+            <p>留言板内容</p>
+        </div>
+        <form id="frmnote" action="" method="post" accept-charset="utf-8">
+            <div class="notetitle">
+                <input type="text" name="title" value="" placeholder="留言标题">
+            </div>
+            <div class="con-content">
+                <textarea name="content"></textarea>
+            </div>
+            <div class="con-operate">
+                <input type="submit" value="提交">
+                <button>清空</button>
+            </div>
+        </form>
+    </article>
+    <footer>
+        <div class="footline"></div>
+        <p class="foottext">copyright 2014</p>
+    </footer>
+    <script type="text/javascript">
+    	jQuery("#frmnote input[type='submit']").click(function(){
+	    	jQuery.ajax({
+	    		url: '../../submitnote',
+	    		type: 'post',
+	    		dataType: 'json',
+	    		data: {content: jQuery("#frmnote textarea").val(),title:jQuery(".notetitle input").val()},
+	    		success:function(msg){
+	    			var _msg = msg.msg;
+	    			alert("提交"+_msg);
+	    			console.dir(opercateCookie.getcookie("loginname"));
+	    		}
+	    	});
+    	}); 
+    	jQuery("#frmnote").bind("submit",function(e){
+    		return false;
+    	});
+    </script>
+    <script type="text/javascript">
+    	var cookieName = opercateCookie.getcookie("loginname");
+    	$("#loginname").text(cookieName);
+    	$("#nodename").bind('click', function(event) {
+    		window.open("../../notecontent");
+    	});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/notecss/notelogin.css">
+	<script type="text/javascript" src="../../javascripts/cookies.js"></script>
+	<script type="text/javascript" src="../../javascripts/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+	<header>
+		<a href="#">
+			<img src="../../images/logo.png">
+		</a>
+		<span class="logoword">极图</span>
+	</header>
+	<article>
+		<div>
+			<div class="logininfo">
+				<div class="headimage"></div>
+			</div>
+			<div class="logonform">
+				<form action="../../notelogin" method="post" id="login-form">
+					<input type="text" placeholder="请输入用户名" autocomplete="on" class="username" name="notename">
+					<input type="password" class="userpassword" placeholder="请输入密码" name="notepassword">
+					<input type="submit" value="登录" class="userlogon">
+				</form>
+			</div>
+			<script type="text/javascript">
+				var logonform = document.getElementById("login-form");
+				if(logonform.attachEvent){
+					logonform.attachEvent("onsubmit",function(e,dd){
+						opercateCookie.setcookie("loginname",$("input[type='text']").val(),1);
+					});
+				}else if(logonform.addEventListener){
+					logonform.addEventListener("submit",function(e,dd){
+						opercateCookie.setcookie("loginname",$("input[type='text']").val(),1);
+					});
+				}else{
+					logonform["onsubmit"] = function(e){
+						opercateCookie.setcookie("loginname",$("input[type='text']").val(),1);
+					};
+				}
+			</script>
+		</div>
+	</article>
+	<footer>
+		<div>
+			<div class="loginbottomline"></div>
+			<p>copyright 2014</p>
+		</div>
+	</footer>
+</body>
+</html>
