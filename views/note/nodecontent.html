@@ -57,7 +57,7 @@
 					jQuery("p[data-key='"+dataId+"']").parent().append(htmlObj);
 					jQuery("p[data-key='"+dataId+"']").parent().siblings().find(' div').addClass('hide');
 				}
-				jQuery(".notecontent").one('click', function(event) {
+				jQuery(".notecontent").bind('click', function(event) {
 					var keyId = jQuery(this).attr("data-key");
 					jQuery.get('../../getContentId', {id: keyId}, function(data, textStatus, xhr) {
 						var _html = jQuery('<div class="itemContent"><p>[content]</p></div>'.replace("[content]",data[0].content));
