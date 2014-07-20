@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../../stylesheets/notecss/notecontent.css">
+		<script type="text/javascript" src="../javascripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../javascripts/cookies.js"></script>
+	</head>
+	<body>
+		<header>
+			<ul class="menu">
+				<li id="userInfo">未登录</li>
+				<li>退出</li>
+			</ul>
+		</header>
+		<article>
+			<ul class="notelist">
+				<li class="noteitem current">
+					
+					<p class="notecontent">笔记内容</p>
+				</li>
+				<li class="noteitem">
+					<p class="notecontent">笔记内容1</p>
+				</li>
+			</ul>
+		</article>
+		<script type="text/javascript">
+			jQuery.ajax({
+			  url: '../../getNoteContent',
+			  type: 'get',
+			  dataType: 'json',
+			  data: {name: 'wangjie'},
+			  complete: function(xhr, textStatus) {
+			    //called when complete
+			  },
+			  success: function(data, textStatus, xhr) {
+			    var html = '<li class="noteitem"><p class="notecontent current" data-key="[keyId]">[content]</p></li>';
+			    var htmlstr = "";
+			    for (var i = 0; i < data.length; i++) {
+			    	if(i==0){
+			    		htmlstr += html.replace("[content]",data[i].title).replace("[keyId]",data[i].id);
+			    	}else{
+			    		htmlstr += html.replace("current","").replace("[content]",data[i].title).replace("[keyId]",data[i].id);
+			    	}
+			    };
+			    jQuery(".notelist").html(htmlstr);
+			  },
+			  error: function(xhr, textStatus, errorThrown) {
+			    //called when there is an error
+			  }
+			});
+			var userName = opercateCookie.getcookie("loginname");
+			jQuery("#userInfo").text(userName);
+
+			setTimeout(function(){
+				function appendHtml(htmlObj,dataId){
+					jQuery("p[data-key='"+dataId+"']").parent().append(htmlObj);
+					jQuery("p[data-key='"+dataId+"']").parent().siblings().find(' div').addClass('hide');
+					jQuery("p[data-key='"+dataId+"']").addClass('current');
+					jQuery("p[data-key='"+dataId+"']").parent().siblings().find(' p').removeClass('current');
+				}
+				jQuery(".notecontent").bind('click', function(event) {
+					var keyId = jQuery(this).attr("data-key");
+					jQuery.get('../../getContentId', {id: keyId}, function(data, textStatus, xhr) {
+						var _html = jQuery('<div class="itemContent"><p>[content]</p></div>'.replace("[content]",data[0].content));
+						appendHtml(_html,keyId);
+					});	
+				});
+			},100);
+			
+		</script>
+		<footer>
+			<div class="footline"></div>
+			<p class="foottext">copyright 2004</p>
+		</footer>
+	</body>
+</html>
