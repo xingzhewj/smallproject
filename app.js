@@ -58,6 +58,8 @@ app.get("/notecontent",routes.notecontent);
 app.get("/getNoteContent",routes.getNoteContent);
 app.get("/getContentId",routes.getContentId);
 
+app.get("/main",routes.main);
+
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
