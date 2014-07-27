@@ -185,7 +185,10 @@ exports.getContentId = function(req,res){
         }
     });
 };
-
+/*-----------------------------------*/
 exports.main = function(req,res){
     res.render("main/mian",{title:"主页"});
+}
+exports.people = function(req,res){
+    res.render("people/people",{title:"个人信息"});
 }
