@@ -192,3 +192,6 @@ exports.main = function(req,res){
 exports.people = function(req,res){
     res.render("people/people",{title:"个人信息"});
 }
+exports.menus = function(req,res){
+    res.render("menu/menu",{"title":"今日菜单"});
+}

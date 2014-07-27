@@ -1,0 +1,129 @@
+<% include ../basechips/header.ejs %>
+<% include ../basechips/banner.ejs %>
+<% include ../chiptools/headermenu.ejs %>
+<style type="text/css">
+	.main{
+		width: 100%;
+	}
+	.menus{
+		width: 90%;
+		height: 350px;
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+	.menu-items{
+		list-style: none;
+	}
+	.menu-item{
+		float: left;
+		width: 30%;
+		margin-left: 6px;
+		margin-top: 10px;
+	}
+	.menu-item:hover{
+		background-color: rgb(104, 204, 26);
+		border-radius: 10px;
+		opacity:0.2;
+	}
+	.menu-item img{
+		width: 100%;
+		background-position: center;
+	}
+	.menu-name{
+		height: 100px;
+		width: 90%;
+		margin: 0 auto;
+	}
+	.menu-names{
+		list-style: none;
+	}
+	.menu-nm{
+		width: 30%;
+		line-height: 40px;
+		float: left;
+		text-align: center;
+		background-color: rgb(183, 226, 223);
+		margin-left: 6px;
+		margin-top: 5px;
+	}
+	.menu-nm:hover{
+		background-color: rgb(183, 223, 175);
+	}
+	.icon-current{
+		background: url(./images/icons/glyphicons-halflings.png) no-repeat -288px 0;
+		right: 0px;
+		height: 24px;
+		width: 24px;
+		position: absolute;
+		display: block;
+		top:2px;
+	}
+	.current{
+		background-color: rgb(173, 233, 197);
+		border-radius: 10px;
+	}
+</style>
+<div class="main">
+	<div class="menus">
+		<ul class="menu-items">
+			<li class="menu-item">
+				<a href="#">
+					<img class="current" src="./images/icons/food/birthday10.png">
+				</a>
+				<i class="icon-current"></i>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="#">
+					<img src="./images/icons/food/birthday10.png">
+				</a>
+			</li>
+		</ul>
+		
+	</div>
+	<div class="menu-name">
+		<ul class="menu-names">
+			<li class="menu-nm">食物0</li>
+			<li class="menu-nm">食物0</li>
+			<li class="menu-nm">食物0</li>
+			<li class="menu-nm">食物0</li>
+			<li class="menu-nm">食物0</li>
+			<li class="menu-nm">食物0</li>
+		</ul>
+	</div>
+</div>
+<% include ../basechips/footer.ejs %>
