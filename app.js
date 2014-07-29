@@ -4,7 +4,6 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var ejs = require('ejs');
@@ -31,33 +30,6 @@ if ('development' == app.get('env')) {
 }
 
 //映射请求
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/login', routes.login);
-app.post('/login', routes.dologin);
-app.get('/home', routes.home);
-app.post('/home', routes.getInfo);
-app.get('/getstudent', routes.getStudent);
-app.get('/geteatstudent', routes.getEatStudent);
-app.get('/menu', routes.getMenuName);
-app.post('/savamenu', routes.savaMenu);
-app.get('/getmenuinfo', routes.getMenuInfo);
-app.get('/gettodaymenu', routes.gettodaymenu);
-app.post('/savetodaystudent', routes.saveTodayStudent);
-app.post('/saveUser', routes.saveUser);
-app.get('/deleteUser', routes.deleteUser);
-app.get('/getTodayPeople', routes.getTodayPeople);
-app.post('/saveUserEdit', routes.saveUserEdit);
-app.post('/saveTodayStu', routes.saveTodayStu);
-
-app.get('/noteindex', routes.noteindex);
-app.post('/notelogin', routes.noteLogin);
-app.get('/note',routes.note);
-app.post('/submitnote',routes.submitnote);
-app.get("/notecontent",routes.notecontent);
-app.get("/getNoteContent",routes.getNoteContent);
-app.get("/getContentId",routes.getContentId);
-
 app.get("/main",routes.main);
 app.get("/people",routes.people);
 app.get("/menus",routes.menus);
